@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Login</title>
+      <link rel="stylesheet" href="login.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+      <div class="wrapper">
+         <div class="title-text">
+            <div class="title login">
+               Login Form
+            </div>
+            <div class="title signup">
+               Register Here
+            </div>
+         </div>
+         <div class="form-container">
+            <div class="slide-controls">
+               <input type="radio" name="slide" id="login" checked>
+               <input type="radio" name="slide" id="signup">
+               <label for="login" class="slide login">Login</label>
+               <label for="signup" class="slide signup">Register</label>
+               <div class="slider-tab"></div>
+            </div>
+            <div class="form-inner">
+               <form action="#" class="login">
+                  <div class="field">
+                     <input id="login_email" type="email" placeholder="Email Address" required>
+                  </div>
+                  <div class="field">
+                     <input id="login_password" type="password" placeholder="Password" required>
+                  </div>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input id="login" type="submit" value="Login">
+                  </div>
+                  <div class="signup-link">
+                      <a href="">Not a member? Register</a>
+                  </div>
+               </form>
+               <form action="#" class="signup">
+                  <div class="field">
+                     <input type="text" id="username" placeholder="UserName" required>
+                  </div>
+                  <div class="field">
+                     <input type="email" id="email" placeholder="Email Address" required>
+                  </div>
+                  <div class="field">
+                     <input type="password" id="password" placeholder="Password" required>
+                  </div>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input id="register" type="submit" value="Signup">
+                  </div>
+                  <div class="or">
+                    or
+                  </div>
+                  <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input id="google" type="submit" value="Signup with GOOGLE">
+                 </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <script type="module">
+         const loginText = document.querySelector(".title-text .login");
+         const loginForm = document.querySelector("form.login");
+         const loginBtn = document.querySelector("label.login");
+         const signupBtn = document.querySelector("label.signup");
+         const signupLink = document.querySelector("form .signup-link a");
+         signupBtn.onclick = (()=>{
+           loginForm.style.marginLeft = "-50%";
+           loginText.style.marginLeft = "-50%";
+         });
+         loginBtn.onclick = (()=>{
+           loginForm.style.marginLeft = "0%";
+           loginText.style.marginLeft = "0%";
+         });
+         signupLink.onclick = (()=>{
+           signupBtn.click();
+           return false;
+         });
+      </script>
+
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+    import { getAuth ,GoogleAuthProvider , createUserWithEmailAndPassword , signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDft2QHt_KEwphoruhVvk9Vg_3hgkzO-Jw",
+    authDomain: "krishi-sahay.firebaseapp.com",
+    projectId: "krishi-sahay",
+    storageBucket: "krishi-sahay.appspot.com",
+    messagingSenderId: "615732053634",
+    appId: "1:615732053634:web:e7b40bc6a609d39957569b"
+  };
+
+  // Initialize Firebase
+//   const app = initializeApp(firebaseConfig);
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    console.log(app);
+
+   
+
+    //----- New Registration code start	  
+    document.getElementById("register").addEventListener("click", function() {
+        var username = document.getElementById('username').value;
+        var email =  document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        //For new registration
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log(user);
+          alert("Registration successfully!!");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+          console.log(errorMessage);
+          alert(error);
+        });		  		  
+    });
+    //----- End
+
+    //----- Login code start	  
+    document.getElementById("login").addEventListener("click", function() {
+        var email =  document.getElementById("login_email").value;
+        var password = document.getElementById("login_password").value;
+
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log(user);
+          alert(user.email+" Login successfully!!!");
+        //   document.getElementById('logout').style.display = 'block';
+        window.location.href = "../index.html";
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          alert(errorMessage);
+        });		  
+        
+
+    });
+    //----- End
+
+    //----- Logout code start	  
+    // document.getElementById("logout").addEventListener("click", function() {
+    //     signOut(auth).then(() => {
+    //         // Sign-out successful.
+    //         console.log('Sign-out successful.');
+    //         alert('Sign-out successful.');
+    //         document.getElementById('logout').style.display = 'none';
+    //       }).catch((error) => {
+    //         // An error happened.
+    //         console.log('An error happened.');
+    //       });		  		  
+    // });
+    // //----- End
+
+  </script>
+</html>
