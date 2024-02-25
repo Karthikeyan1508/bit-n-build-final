@@ -55,12 +55,12 @@
                      <div class="btn-layer"></div>
                      <input id="register" type="submit" value="Signup">
                   </div>
-                  <div class="or">
+                  <!-- <div class="or">
                     or
                   </div>
                   <div class="field btn">
                     <div class="btn-layer"></div>
-                    <input id="google" type="submit" value="Signup with GOOGLE">
+                    <input id="google" type="submit" value="Signup with GOOGLE"> -->
                  </div>
                </form>
             </div>
@@ -118,7 +118,7 @@
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
     console.log(app);
-    
+
     //----- New Registration code start	  
     document.getElementById("register").addEventListener("click", function() {
         var username = document.getElementById('username').value;
