@@ -9,48 +9,50 @@
 
 </head>
 <body>
-  <h2>Seed Information</h2>
-  <form id="seedForm">
-    <label for="seedName">Seed Name:</label>
-    <input type="text" id="seedName" name="seedName"><br><br> 
-    <!-- <input type="submit" value="Submit Seed Info"> -->
-  <!-- </form>
-  <button onclick="saveSeedData()">Add Data</button> -->
+  <div class="container">
+      <h2 style="padding-top: 10px;">Seed Information</h2>
+      <form id="seedForm">
+        <label for="seedName">Seed Name:</label>
+        <input type="text" id="seedName" name="seedName"><br><br> 
+        <!-- <input type="submit" value="Submit Seed Info"> -->
+      <!-- </form>
+      <button onclick="saveSeedData()">Add Data</button> -->
+          
+      <h2 style="padding-top: 10px;">Tool Information</h2>
+      <form id="toolForm">
+        <label for="plough">Plough Number:</label>
+        <input type="number" id="plough" name="plough"><br><br>
+        <label for="harrow">Harrow Number:</label>
+        <input type="number" id="harrow" name="harrow"><br><br>
+        <label for="seedDrill">Seed Drill Number:</label>
+        <input type="number" id="seedDrill" name="seedDrill"><br><br>
+        <label for="transplanter">Transplanter Number:</label>
+        <input type="number" id="transplanter" name="transplanter"><br><br>
+        <label for="combineHarvester">Combine Harvester Number:</label>
+        <input type="number" id="combineHarvester" name="combineHarvester"><br><br>
+        <!-- <input type="submit" value="Submit Tool Info"> -->
+      </form>
+      <button style="margin-top: -10px;" onclick="saveData()">Add Data</button>
+    <br/>
+    <button style="margin-top: -5px; margin-bottom:5px;" onclick="readLastSavedData()">Read Data</button>
+    <div id="dataDisplay">
+        <!-- Data will be displayed here -->
+        <div id="seeds"></div>
+        <div id="Rplough"></div>
+        <div id="Rharrow"></div>
+        <div id="RseedDrill"></div>
+        <div id="Rtransplanter"></div>
+        <div id="RcombineHarvester"></div>
+    </div>
 
-  <h2>Tool Information</h2>
-  <form id="toolForm">
-    <label for="plough">Plough Number:</label>
-    <input type="number" id="plough" name="plough"><br><br>
-    <label for="harrow">Harrow Number:</label>
-    <input type="number" id="harrow" name="harrow"><br><br>
-    <label for="seedDrill">Seed Drill Number:</label>
-    <input type="number" id="seedDrill" name="seedDrill"><br><br>
-    <label for="transplanter">Transplanter Number:</label>
-    <input type="number" id="transplanter" name="transplanter"><br><br>
-    <label for="combineHarvester">Combine Harvester Number:</label>
-    <input type="number" id="combineHarvester" name="combineHarvester"><br><br>
-    <!-- <input type="submit" value="Submit Tool Info"> -->
-  </form>
-  <button onclick="saveData()">Add Data</button>
-<br/>
-<button onclick="readLastSavedData()">Read Data</button>
-<div id="dataDisplay">
-    <!-- Data will be displayed here -->
-    <div id="seeds"></div>
-    <div id="Rplough"></div>
-    <div id="Rharrow"></div>
-    <div id="RseedDrill"></div>
-    <div id="Rtransplanter"></div>
-    <div id="RcombineHarvester"></div>
+    <h2 style="padding-top: 20px;">Updated Info</h2>
+    <form id="Updated">
+        <label for="upPlough">Updated Plough Number:</label>
+        <input type="number" id="upPlough" name="upPlough"><br><br>
+    </form>
+
+    <button onclick="updateLastSavedData()">Update Data</button>
 </div>
-
-<h2>Updated Info</h2>
-<form id="Updated">
-    <label for="upPlough">Updated Plough Number:</label>
-    <input type="number" id="upPlough" name="upPlough"><br><br>
-</form>
-
-<button onclick="updateLastSavedData()">Update Data</button>
 
   
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
