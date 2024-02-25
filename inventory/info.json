@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Rice",
+        "tools": ["Plough", "Harrow", "Seed drill", "Transplanter"],
+        "temperature": "20°C to 37°C",
+        "field_conditions": "Flooded or well-irrigated fields with loamy soil."
+      },
+      {
+        "name": "Wheat",
+        "tools": ["Plough", "Seed drill", "Combine harvester"],
+        "temperature": "10°C to 25°C",
+        "field_conditions": "Well-drained loamy soil."
+      },
+      {
+        "name": "Cotton",
+        "tools": ["Plough", "Cultivator", "Cotton picker"],
+        "temperature": "21°C to 30°C",
+        "field_conditions": "Sandy loam or clay loam soil with good drainage."
+      },
+      {
+        "name": "Sugarcane",
+        "tools": ["Plough", "Cultivator", "Sugarcane planter", "Sugarcane harvester"],
+        "temperature": "20°C to 30°C",
+        "field_conditions": "Deep, well-drained loamy soil with adequate moisture."
+      },
+      {
+        "name": "Maize (Corn)",
+        "tools": ["Plough", "Harrow", "Seed drill", "Combine harvester"],
+        "temperature": "18°C to 30°C",
+        "field_conditions": "Well-drained fertile soil."
+      },
+      {
+        "name": "Potatoes",
+        "tools": ["Plough", "Ridger", "Potato planter", "Potato digger"],
+        "temperature": "7°C to 24°C",
+        "field_conditions": "Loamy, well-drained soil with good organic content."
+      },
+      {
+        "name": "Tomatoes",
+        "tools": ["Plough", "Cultivator", "Seedling transplanter"],
+        "temperature": "15°C to 30°C",
+        "field_conditions": "Sandy loam or clay loam soil with good drainage."
+      },
+      {
+        "name": "Onions",
+        "tools": ["Plough", "Cultivator", "Onion planter", "Onion harvester"],
+        "temperature": "13°C to 24°C",
+        "field_conditions": "Well-drained sandy loam soil."
+      },
+      {
+        "name": "Chillies",
+        "tools": ["Plough", "Cultivator", "Seedling transplanter"],
+        "temperature": "20°C to 35°C",
+        "field_conditions": "Sandy loam or clay loam soil with good drainage."
+      },
+      {
+        "name": "Soybeans",
+        "tools": ["Plough", "Cultivator", "Seed drill", "Combine harvester"],
+        "temperature": "20°C to 30°C",
+        "field_conditions": "Well-drained loamy soil."
+      },
+      {
+        "name": "Tea",
+        "tools": ["Pruning shears", "Tea plucking machine"],
+        "temperature": "15°C to 30°C",
+        "field_conditions": "Acidic soil with good drainage, preferably in hilly regions."
+      },
+      {
+        "name": "Coffee",
+        "tools": ["Pruning shears", "Coffee pulper"],
+        "temperature": "15°C to 28°C",
+        "field_conditions": "Well-drained, fertile soil with partial shade, preferably in hilly regions."
+      },
+      {
+        "name": "Black Pepper",
+        "tools": ["Trellis", "Harvesting knives"],
+        "temperature": "25°C to 35°C",
+        "field_conditions": "Warm and humid climate, well-drained soil rich in organic matter."
+      },
+      {
+        "name": "Cardamom",
+        "tools": ["Pruning shears", "Sickle"],
+        "temperature": "10°C to 35°C",
+        "field_conditions": "Shady, humid areas with well-drained loamy soil."
+      },
+      {
+        "name": "Mangoes",
+        "tools": ["Pruning shears", "Grafting tools"],
+        "temperature": "25°C to 30°C",
+        "field_conditions": "Well-drained sandy or loamy soil with good organic content."
+      }
+  
+]

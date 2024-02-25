@@ -1,0 +1,57 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+#cropSelect {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.crop-info {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.crop-info h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+.crop-info p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Hover effect for dropdown options */
+#cropSelect:hover,
+#cropSelect:focus {
+    border-color: #66afe9;
+}
+
+#cropInfo p strong {
+    margin-right: 5px;
+}

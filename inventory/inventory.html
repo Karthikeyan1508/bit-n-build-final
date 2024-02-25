@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crop Information</title>
+    <link rel="stylesheet" href="inventory.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Crop Information</h1>
+      <select id="cropSelect">
+        <option value="">Select Crop</option>
+      </select>
+      <div id="cropInfo" class="crop-info"></div>
+    </div>
+    <!-- <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js"></script> -->
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+      // Initialize Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyDft2QHt_KEwphoruhVvk9Vg_3hgkzO-Jw",
+        authDomain: "krishi-sahay.firebaseapp.com",
+        projectId: "krishi-sahay",
+        storageBucket: "krishi-sahay.appspot.com",
+        messagingSenderId: "615732053634",
+        appId: "1:615732053634:web:e7b40bc6a609d39957569b",
+        databaseURL: "https://krishi-sahay-default-rtdb.firebaseio.com/",
+      };
+      const app = firebase.initializeApp(firebaseConfig);
+      const database = firebase.database(app);
+      console.log(database);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const cropSelect = document.getElementById("cropSelect");
+        const cropInfo = document.getElementById("cropInfo");
+
+        // Fetch crops data from Firebase
+        const dbRef = database.ref("crops/");
+        dbRef
+          .once("value")
+          .then((snapshot) => {
+            const cropsData = snapshot.val();
+
+            if (cropsData) {
+              Object.keys(cropsData).forEach((key) => {
+                const crop = cropsData[key];
+                const option = document.createElement("option");
+                option.value = crop.name;
+                option.textContent = crop.name;
+                cropSelect.appendChild(option);
+              });
+            } else {
+              console.error("No crops data found in the database");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching crops data:", error);
+          });
+        //   console.log(dbRef);
+
+        // Event listener for dropdown change
+        cropSelect.addEventListener("change", function () {
+          const selectedCrop = this.value;
+          if (!selectedCrop) return;
+
+          // Find selected crop data
+          dbRef
+            .once("value")
+            .then((snapshot) => {
+              const cropsData = snapshot.val();
+              const selectedCropData = Object.values(cropsData).find(
+                (crop) => crop.name === selectedCrop
+              );
+
+              if (selectedCropData) {
+                const toolsList = selectedCropData.tools.join(", ");
+                const temperature = selectedCropData.temperature;
+                const fieldConditions = selectedCropData.field_conditions;
+                const cropInfoHTML = `
+                            <h2>${selectedCrop}</h2>
+                            <p><strong>Tools:</strong> ${toolsList}</p>
+                            <p><strong>Temperature:</strong> ${temperature}</p>
+                            <p><strong>Field Conditions:</strong> ${fieldConditions}</p>
+                        `;
+                cropInfo.innerHTML = cropInfoHTML;
+              } else {
+                cropInfo.innerHTML =
+                  "<p>No information available for this crop.</p>";
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching crops data:", error);
+            });
+        });
+      });
+    </script>
+  </body>
+</html>
